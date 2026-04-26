@@ -5,6 +5,8 @@ Minimalist volume HUD for Windows. Optimized for high-contrast environments.
 [![License: MIT](https://img.shields.io/badge/License-MIT-00FF41.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 [![Release](https://img.shields.io/github/v/release/KillerKannibal/Vulume?style=flat-square&color=00FF41)](https://github.com/KillerKannibal/Vulume/releases)
 
+
+![Vulume HUD Preview] (media\Screenshot.png)
 ---
 
 ### Core
