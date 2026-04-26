@@ -29,8 +29,6 @@ Name: "main"; Description: "Vulume HUD Core"; Types: full compact custom; Flags:
 Name: "hideosd"; Description: "HideVolumeOSD (Removes Windows Default Volume Bar)"; Types: full
 
 [Code]
-// This function launches the download in the user's default browser
-// It's the most reliable way to handle external dependencies without DLL conflicts
 procedure CurStepChanged(CurStep: TSetupStep);
 var
   ResultCode: Integer;
@@ -38,11 +36,16 @@ var
 begin
   if (CurStep = ssPostInstall) and IsComponentSelected('hideosd') then
   begin
-    DownloadUrl := 'https://github.com/marcusheider/HideVolumeOSD/releases/download/v1.4/HideVolumeOSD-1.4.exe';
+    // Updated stable link for the 1.4 version
+    DownloadUrl := 'http://wordpress.venturi.de/wp-content/uploads/2022/12/HideVolumeOSD-1.4.exe';
     
     if MsgBox('The installer will now open the download for HideVolumeOSD. Please install it to hide the default Windows volume bar. Continue?', mbConfirmation, MB_YESNO) = IDYES then
     begin
-      ShellExec('open', DownloadUrl, '', '', SW_SHOWNORMAL, ewNoWait, ResultCode);
+      // Using SW_SHOWNORMAL and ewNoWait to ensure it pops up over the installer
+      if not ShellExec('open', DownloadUrl, '', '', SW_SHOWNORMAL, ewNoWait, ResultCode) then
+      begin
+        MsgBox('Failed to open download link. Please visit: http://wordpress.venturi.de/?p=379 manually.', mbError, MB_OK);
+      end;
     end;
   end;
 end;
