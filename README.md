@@ -1,28 +1,34 @@
 # Vulume
 
-Vulume is a customizable Windows volume slider built with .NET and C#. It provides a clean and flexible alternative to the default Windows volume control, allowing users to adjust audio levels with a more refined and configurable interface.
+Minimalist volume HUD for Windows. Optimized for high-contrast environments.
 
-## Overview
+[![License: MIT](https://img.shields.io/badge/License-MIT-00FF41.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+[![Release](https://img.shields.io/github/v/release/KillerKannibal/Vulume?style=flat-square&color=00FF41)](https://github.com/KillerKannibal/Vulume/releases)
 
-Vulume enhances the standard Windows audio experience by offering a modern, lightweight volume control with customization options. It is designed to be simple, responsive, and easy to integrate into your workflow.
+---
 
-## Features
+### Core
+* **Engine:** .NET 8.0 (Self-Contained)
+* **API:** Win32 (User32/Shell32)
+* **Audio:** AudioSwitcher.AudioApi
+* **Styling:** WPF / XAML
 
-- Customizable volume slider interface
-- Lightweight and fast performance
-- Seamless integration with Windows audio system
-- Minimal and clean UI design
-- Easy configuration and extensibility
+### Functionality
+* **Dynamic Offsets:** Real-time vertical positioning via settings.
+* **RGB Integration:** System-wide hex/RGB color matching via Extended WPF Toolkit.
+* **OSD Override:** Optional integration with HideVolumeOSD to suppress native Windows elements.
+* **Portability:** Zero-dependency execution (Standalone).
 
-## Requirements
+### Installation
 
-- Windows 10 or later
+1. Download `Vulume_Setup.exe` from [Releases](https://github.com/KillerKannibal/Vulume/releases).
+2. Execute installer (Admin required for startup tasks).
+3. Access configuration via System Tray context menu.
 
-- Some basic terminal knowledge to compile from source, or download the release.
+### Build from Source
 
-- .NET 8.0
-
-``bash
-dotnet build
-
-dotnet run
+```bash
+# Requirements: .NET 8.0 SDK
+git clone [https://github.com/KillerKannibal/Vulume.git](https://github.com/KillerKannibal/Vulume.git)
+cd Vulume
+dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true
